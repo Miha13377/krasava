@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>жыгытерге калкулятор</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator-container {
+            text-align: center;
+        }
+
+        .message {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .calculator {
+            background-color: #2d2d2d;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 350px;
+        }
+
+        .display {
+            background-color: #111;
+            color: white;
+            font-size: 36px;
+            text-align: right;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 15px;
+        }
+
+        .button {
+            background-color: #444;
+            color: white;
+            font-size: 24px;
+            border: none;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:active {
+            background-color: #666;
+        }
+
+        .button.operator {
+            background-color: #f0a500;
+        }
+
+        .button.operator:active {
+            background-color: #e38f00;
+        }
+
+        .button.clear {
+            background-color: #e60000;
+        }
+
+        .button.clear:active {
+            background-color: #cc0000;
+        }
+
+        .button.equals {
+            background-color: #4caf50;
+        }
+
+        .button.equals:active {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <!-- Сообщение наверху -->
+        <div class="message">
+            Жигиттер интернеттерын тасып баратса осы калькуляторды колданындар
+        </div>
+
+        <!-- Калькулятор -->
+        <div class="calculator">
+            <div class="display" id="display">0</div>
+            <div class="buttons">
+                <button class="button clear" onclick="clearDisplay()">C</button>
+                <button class="button operator" onclick="appendCharacter('/')">/</button>
+                <button class="button operator" onclick="appendCharacter('*')">*</button>
+                <button class="button operator" onclick="appendCharacter('-')">-</button>
+
+                <button class="button" onclick="appendCharacter('7')">7</button>
+                <button class="button" onclick="appendCharacter('8')">8</button>
+                <button class="button" onclick="appendCharacter('9')">9</button>
+                <button class="button operator" onclick="appendCharacter('+')">+</button>
+
+                <button class="button" onclick="appendCharacter('4')">4</button>
+                <button class="button" onclick="appendCharacter('5')">5</button>
+                <button class="button" onclick="appendCharacter('6')">6</button>
+                <button class="button equals" onclick="calculate()">=</button>
+
+                <button class="button" onclick="appendCharacter('1')">1</button>
+                <button class="button" onclick="appendCharacter('2')">2</button>
+                <button class="button" onclick="appendCharacter('3')">3</button>
+                <button class="button" onclick="appendCharacter('0')">0</button>
+
+                <button class="button" onclick="appendCharacter('.')">.</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = '0';
+
+        // Функция для очистки экрана
+        function clearDisplay() {
+            currentInput = '0';
+            updateDisplay();
+        }
+
+        // Функция для добавления символов
+        function appendCharacter(character) {
+            if (currentInput === '0' && character !== '.') {
+                currentInput = character;
+            } else {
+                currentInput += character;
+            }
+            updateDisplay();
+        }
+
+        // Функция для обновления дисплея калькулятора
+        function updateDisplay() {
+            document.getElementById('display').innerText = currentInput;
+        }
+
+        // Функция для вычислений
+        function calculate() {
+            try {
+                currentInput = eval(currentInput).toString();
+                updateDisplay();
+            } catch (e) {
+                currentInput = 'Ошибка';
+                updateDisplay();
+            }
+        }
+    </script>
+</body>
+</html>
