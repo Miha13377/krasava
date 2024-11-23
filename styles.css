@@ -1,0 +1,83 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator-container {
+    text-align: center;
+}
+
+.message {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.calculator {
+    background-color: #2d2d2d;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px;
+}
+
+.display {
+    background-color: #111;
+    color: white;
+    font-size: 36px;
+    text-align: right;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+}
+
+.button {
+    background-color: #444;
+    color: white;
+    font-size: 24px;
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:active {
+    background-color: #666;
+}
+
+.button.operator {
+    background-color: #f0a500;
+}
+
+.button.operator:active {
+    background-color: #e38f00;
+}
+
+.button.clear {
+    background-color: #e60000;
+}
+
+.button.clear:active {
+    background-color: #cc0000;
+}
+
+.button.equals {
+    background-color: #4caf50;
+}
+
+.button.equals:active {
+    background-color: #45a049;
+}
